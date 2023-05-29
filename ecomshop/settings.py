@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd=pow_p+rsgtu$#!v_+%ph+dea3i$8v&q!a%msmqcyc3q8f0+x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['techshopee.xyz', '16.171.26.18', '0.0.0.0']
 # Application definition
 
 # INSTALLED_APPS = [
@@ -176,3 +176,5 @@ MEDIA_URL = '/media/'
 RAZORPAY_API_KEY = 'rzp_test_vu1OqJqod5sIWF'
 RAZORPAY_API_SECRET = 'WlMPJWrvYDENBDKX9SvW5jMd'
 SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
+
+CSRF_TRUSTED_ORIGINS =['https://techshopee.xyz']

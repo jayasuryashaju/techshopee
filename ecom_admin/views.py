@@ -116,14 +116,9 @@ def admin_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
-        print(username, password)
-        print(user)
-        # if request.user.is_authenticated:
-        #     login(request, user)
+
         if user.is_authenticated:
             login(request, user)
-            print(user.is_authenticated)
-            print(user.is_superuser)
             if user.is_superuser:
                 request.session['username'] = username
                 return redirect('ecom_admin:admin_panel')
@@ -144,7 +139,6 @@ def edit_user(request, pk):
 
     if request.method == 'POST':
         uform = UserForm(request.POST, instance=user)
-        print(uform.errors)
         if not uform.errors:
             if uform.is_valid():
                 uform.save()
@@ -165,9 +159,7 @@ def edit_user(request, pk):
 @login_required(login_url='admin_login')
 def block_user(request, pk):
     user = User.objects.get(id=pk)
-    print(pk)
     if request.method == 'GET':
-        print(pk)
         if user.is_active:
             user.is_active = False
             user.save()
@@ -361,7 +353,6 @@ def add_coupon(request):
     if request.method == 'POST':
         form = CouponForm(request.POST)
         if form.is_valid():
-            print("hello the for is valid")
             coupon = form.save(commit=False)
             coupon.created = timezone.now()
             coupon.save()
@@ -423,7 +414,6 @@ def add_category_offer(request):
 
 
 def edit_category_offer(request, category_id):
-    print('hello i am edit offer')
     category_offer = CategoryOffer.objects.get(pk=category_id)
     form = None
     if request.method == 'POST':
@@ -446,13 +436,11 @@ def apply_category_offer(request, category_offer_id):
         return redirect("ecom_admin:login")
     if category_offer.is_active:
         return redirect("ecom_admin:offers")
-    print(category_offer.category)
     products = Product.objects.filter(category=category_offer.category)
     all_offers = CategoryOffer.objects.filter(category=category_offer.category)
     for offer in all_offers:
         if offer.is_active:
             deactivate_offer(request, offer.id)
-            print('hello i am offer id', offer.id)
 
     for product in products:
         if product.selling_price != 0:
@@ -528,11 +516,9 @@ def apply_product_offer(request, product_offer_id):
         return redirect("ecom_admin:login")
     if product_offer.is_active:
         return redirect("ecom_admin:offers")
-    print(product_offer.product.category)
     product = Product.objects.get(id=product_offer.product.id)
     for offer in category_offers:
         if offer.is_active:
-            print('hai')
             if offer.discount > product_offer.discount:
                 return redirect("ecom_admin:offers")
             else:
@@ -557,7 +543,6 @@ def delete_product_offer(request, id):
 
 
 def edit_product_offer(request, product_id):
-    print('hello i am edit offer')
     product_offer = ProductOffer.objects.get(pk=product_id)
     form = None
     if request.method == 'POST':
@@ -624,7 +609,6 @@ def change_order_status(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     if request.method == 'POST':
         new_status = request.POST.get('status')
-        print('hei i am new status', new_status)
         order.status = new_status
         order.save()
         # return HttpResponseRedirect(reverse('ecom_admin:order_details_product', args=(order_id,)))

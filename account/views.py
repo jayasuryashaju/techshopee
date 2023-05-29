@@ -38,7 +38,7 @@ def activateEmail(request, user, to_email):
     mail_subject = "Activate your user account."
     message = render_to_string("template_activate_account.html", {
         'user': user.username,
-        'domain': get_current_site(request).domain,
+        'domain': 'techshopee.xyz',
         'uid': urlsafe_base64_encode(force_bytes(user.id)),
         'token': account_activation_token.make_token(user),
         "protocol": 'https' if request.is_secure() else 'http'
