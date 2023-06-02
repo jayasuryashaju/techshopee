@@ -18,8 +18,6 @@ def home(request):
     products = Product.objects.all()
     category_id = request.GET.get('category')
     banners = Banner.objects.all()
-    for banner in banners:
-        print(banner.product.name)
     if category_id:
         products = products.filter(category_id=category_id)
 
@@ -29,7 +27,6 @@ def home(request):
         cart_count = cart_items.count()
         wishlist = Wishlist.objects.filter(user=request.user)
         wishlist_count = wishlist.count()
-
         user = request.user
         context = {
             'user': user,

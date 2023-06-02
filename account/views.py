@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegistrationForm, OTPForm, OTPVerificationForm
@@ -77,27 +78,24 @@ def register(request):
 
 
 def login_user(request):
-    dest = request.META.get('HTTP_REFERER')
+    # dest = request.META.get('HTTP_REFERER')
     email = request.session.get('email')
     if email:
-        print(email, 'hellow')
         return redirect("homelog:home")
     if request.method == 'POST':
         email = request.POST['singin-email']
         password = request.POST['singin-password']
-        print(email)
-        print(password)
         user = authenticate(email=email, password=password)
         if user is not None:
             login(request, user)
             request.session['email'] = email
-            next = PreUrl.url
-            return redirect(next)
-            # return redirect('homelog:home')
+            # next = PreUrl.url
+            # return redirect(next)
+            return redirect('homelog:home')
         else:
             messages.error(request, "email or password is incorrect!!")
             return redirect('account:user_signin')
-    PreUrl(dest)
+    # PreUrl(dest)
     return render(request, "signin.html")
 
 

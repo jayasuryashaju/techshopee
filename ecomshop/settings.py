@@ -22,32 +22,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd=pow_p+rsgtu$#!v_+%ph+dea3i$8v&q!a%msmqcyc3q8f0+x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-
-ALLOWED_HOSTS = ['techshopee.xyz', '16.171.26.18', '0.0.0.0']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['techshopee.xyz', '.techshopee.xyz', '16.171.26.18', '0.0.0.0', 'localhost']
 # Application definition
 
-# INSTALLED_APPS = [
-#     'django.contrib.admin',
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'homelog.apps.HomeLogConfig',
-#     'account.apps.AccountConfig',
-#     'ecom_admin.apps.EcomAdminConfig',
-#     'django_countries',
-# ]
+
 INSTALLED_APPS = ['django.contrib.admin',
                   'django.contrib.auth',
                   'django.contrib.contenttypes',
                   'django.contrib.sessions',
                   'django.contrib.messages',
                   'django.contrib.staticfiles',
-                  'crispy_forms',
-                  'bootstrap4',
                   'django_countries',
                   'account',
                   'homelog',
@@ -94,7 +81,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 WSGI_APPLICATION = 'ecomshop.wsgi.application'
 
@@ -175,6 +161,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 RAZORPAY_API_KEY = 'rzp_test_vu1OqJqod5sIWF'
 RAZORPAY_API_SECRET = 'WlMPJWrvYDENBDKX9SvW5jMd'
-SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
-CSRF_TRUSTED_ORIGINS =['https://techshopee.xyz']
+CSRF_TRUSTED_ORIGINS = ['https://techshopee.xyz']
