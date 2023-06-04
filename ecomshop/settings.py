@@ -25,7 +25,7 @@ SECRET_KEY = 'd=pow_p+rsgtu$#!v_+%ph+dea3i$8v&q!a%msmqcyc3q8f0+x'
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['techshopee.xyz', '.techshopee.xyz', '16.171.26.18', '0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['techshopee.xyz', '.techshopee.xyz', '13.49.243.67', '0.0.0.0', 'localhost']
 # Application definition
 
 
@@ -87,20 +87,33 @@ WSGI_APPLICATION = 'ecomshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ecomdata',
+#         'USER': 'postgres',
+#         'PASSWORD': '9847227810',
+#         'HOST': 'localhost',
+#         'OPTIONS': {
+#             'options': '-c timezone=utc'
+#         }
+#
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecomdata',
-        'USER': 'postgres',
-        'PASSWORD': '9847227810',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
+        'PORT':'',
         'OPTIONS': {
             'options': '-c timezone=utc'
         }
 
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

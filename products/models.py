@@ -21,7 +21,7 @@ class Product(models.Model):
     image4 = models.ImageField(upload_to='products/', null=True, blank=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    selling_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=False)
+    selling_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=False, default=0)
     stock_quantity = models.PositiveIntegerField()
 
     def __str__(self):
