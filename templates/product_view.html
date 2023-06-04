@@ -97,6 +97,8 @@
 
 
                                             {% else %}
+                                            <a href="{% url 'account:user_signin' %}" class="btn btn-info " >Buy Now</a>
+
                                             <a href="{% url 'account:user_signin' %}?next={% url 'cart:add_to_cart' product.id  %}" class="btn-product btn-cart"><span>Add to Cart</span></a>
                                             <div id="stock-alert" class="alert alert-warning" role="alert" style="display: none;"></div>
                                             <a href="{% url 'cart:add_to_wishlist' product_id=product.id %}" class="btn-product btn-wishlist" title="Add to wishlist"><span>Add to Wishlist</span></a>
